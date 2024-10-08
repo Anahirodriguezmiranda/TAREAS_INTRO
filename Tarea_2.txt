@@ -1,0 +1,160 @@
+EJERCICIO 1
+
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner scanner = new Scanner(System.in);
+	    int positivos = 0;
+	    int negativos = 0;
+	    int ceros = 0;
+	   
+	   int[] lista = new int[10];
+	   
+	   for(int i = 0; i<10; i++){
+	   System.out.print("ingresa un numero entero ya sea positivo,negativo o ceros:");
+	   int n = scanner.nextInt();
+	   lista [i] = n;
+	   }
+	   
+	   
+	   for(int i = 0; i<10; i++){
+	   if(lista[i]>0){
+	       positivos++;
+	   }
+	   else if (lista[i]<0){
+	       negativos++;
+	   }
+	   else {
+	       ceros++;
+	   }
+	   }
+	   
+	   System.out.println("el numero de positivos es: " + positivos);
+	   System.out.println("el numero de negativos es: " + negativos);
+	   System.out.println("el numero de ceros es: " + ceros);
+	
+	}
+}
+
+EJERCICIO 2
+
+import java.util.Scanner;
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner scanner = new Scanner(System.in);
+	    int sumapositivos = 0;
+	    int sumanegativos = 0;
+	    int contadorpositivos=0;
+	    int contadornegativos=0;
+	    
+	   
+	   int[] numero = new int[10];
+	   
+	   for(int i = 0; i<10; i++){
+	   System.out.print("ingresa un numero entero:");
+	   int n = scanner.nextInt();
+	   numero [i] = n;
+	   }
+	   
+	   
+	   for(int i = 0; i<10; i++){
+	       if(numero[i]>0){
+	           sumapositivos= sumapositivos+numero[i];
+	           contadorpositivos++;
+	       }
+	   else{
+	       sumanegativos= sumanegativos+numero[i];
+	       contadornegativos++;
+	   }
+	   }
+	   
+	   System.out.println("la media de los positivos es: " +(double)sumapositivos/contadorpositivos );
+	     System.out.println("la media de los positivos es: " +(double)sumanegativos/contadornegativos);
+	   
+	
+	}
+}
+
+EJERCICIO 3
+
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n;
+        int sumaalturas = 0;
+        int superior = 0;
+        int inferior = 0;
+        int media;
+
+        System.out.print("Ingrese el número de personas: ");
+        n = scanner.nextInt();
+
+        int[] altura = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.print("Ingrese su altura en número entero y positivo: ");
+            altura[i] = scanner.nextInt();
+            sumaalturas=sumaalturas+ altura[i]; 
+        }
+
+       
+        media = sumaalturas / n;
+
+        for (int i = 0; i < n; i++) {
+            if (altura[i] > media) {
+                superior++;
+            } else if (altura[i] < media) {
+                inferior++;
+            }
+        }
+
+        System.out.println("La altura media es: " + media);
+        System.out.println("cantidad de personas con altura superior a la media: " + superior);
+        System.out.println("cantidad de personas con altura inferior a la media:" + inferior);
+    }
+}
+
+EJERCICIO 4
+Este ejercicio es igual al ejercicio 2
+
+public class Main
+{
+	public static void main(String[] args) {
+	    Scanner scanner = new Scanner(System.in);
+	    int sumapositivos = 0;
+	    int sumanegativos = 0;
+	    int contadorpositivos=0;
+	    int contadornegativos=0;
+	    
+	   
+	   int[] numero = new int[10];
+	   
+	   for(int i = 0; i<10; i++){
+	   System.out.print("ingresa un numero entero:");
+	   int n = scanner.nextInt();
+	   numero [i] = n;
+	   }
+	   
+	   
+	   for(int i = 0; i<10; i++){
+	       if(numero[i]>0){
+	           sumapositivos= sumapositivos+numero[i];
+	           contadorpositivos++;
+	       }
+	   else{
+	       sumanegativos= sumanegativos+numero[i];
+	       contadornegativos++;
+	   }
+	   }
+	   
+	   System.out.println("la media de los positivos es: " +(double)sumapositivos/contadorpositivos );
+	     System.out.println("la media de los positivos es: " +(double)sumanegativos/contadornegativos);
+	   
+	
+	}
+}
+
+
