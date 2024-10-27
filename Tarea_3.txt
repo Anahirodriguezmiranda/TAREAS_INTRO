@@ -1,0 +1,306 @@
+EJERCICIO 1
+
+costo_fijo = 800
+costo_variable = 20
+costo_maximo = 25
+cantidad = 1
+while (costo_fijo + costo_variable * cantidad) / cantidad >= costo_maximo:
+    cantidad += 1
+
+print("La cantidad mínima de sombreros que debe producir es:", cantidad)
+
+EJERCICIO 2
+
+numero = int(input("Ingresa un número: "))
+
+if numero > 0 and numero % 3 == 0:
+    if numero % 100 != 0 or numero % 300 == 0:
+        print("El número es especial")
+    else:
+        print("El número no es especial")
+else:
+    print("El número no es especial")
+
+EJERCICIO 3 
+
+secuencia = [3, 8, 12, 16, 21]
+diferencias = [5, 4, 4, 5]
+indice = 0
+
+for _ in range(5):
+    nuevo_numero = secuencia[-1] + diferencias[indice]
+    secuencia.append(nuevo_numero)
+    indice = (indice + 1) % 4
+
+print("La secuencia completa es:", secuencia)
+
+EJERCICIO 4
+
+puntos = 0
+for i in range(20):
+    numero = int(input(f"Ingrese el número {i+1}: "))
+
+    es_primo = numero > 1
+    for j in range(2, numero):
+        if numero % j == 0:
+            es_primo = False
+            break
+    if es_primo:
+        puntos += 4
+
+    if numero % 2 == 0:
+        puntos += 1
+
+    if numero % 7 == 0:
+        puntos += 2
+
+if puntos > 70:
+    print("¡La ficha es ganadora!")
+else:
+    print("La ficha no es ganadora.")
+
+EJERCICIO 5
+
+numero = int(input("Ingresa el número de la ficha: "))
+numero_str = str(numero)
+
+if numero_str == numero_str[::-1]:
+    print("Te tocó ir a las clases presenciales")
+else:
+    print("Te quedas en casita, ¡pero a estudiar!")
+
+EJERCICIO 6
+ 
+Analiza la siguiente pieza de código:
+n = 9
+while n > 0:
+ if n % 2 == 0:
+ print("Par")
+ else:
+ print("Impar")
+ n – =3
+¿Cuál será la salida de este código?
+ - el codigo primero ingresa el numero 9, luego verifica si es mayor a 0 seguido lo divide entre 2 y dependiendo al resultado imprime si es par o impar y le resta 3. al final imprime dos impares y un par.
+
+EJERCICIO 7
+
+grupo1 = 0
+grupo2 = 0
+grupo3 = 0
+grupo4 = 0
+
+estudiantes_por_edad = 1000 // 8
+
+for edad in range(10, 18):
+    for _ in range(estudiantes_por_edad):
+        if edad % 5 == 0 and edad % 2 != 0:
+            grupo1 += 1
+        elif edad % 4 == 0:
+            grupo2 += 1
+        elif edad % 3 == 0 and edad % 4 != 0 and edad % 5 != 0 and edad % 2 != 0:
+            grupo3 += 1
+        else:
+            grupo4 += 1
+print("Grupo 1 :", grupo1)
+print("Grupo 2 :", grupo2)
+print("Grupo 3 :", grupo3)
+print("Grupo 4 :", grupo4)
+
+EJERCICIO 8
+
+Analiza el siguiente código y describe su funcionamiento. ¿Qué hace el código?
+# Solo necesitamos comprobar divisores hasta la raíz cuadrada del número, pueden contar
+# hasta el número también.
+if numero <= 1:
+print("No")
+else:
+for i in range(2, int(numero**0.5) + 1):
+if numero % i == 0:
+print("No")
+else:
+print("Sí")
+
+Primero el if lo usamos par ver si el numero es menor o igual que uno si es asi imprime un no, pero si pasa lo contrario pasa a un for (for i in range(2, int(numero**0.5) + 1):) donde se ve si el numero es primo, este ( if numero % i == 0:) nos  deja ver que si el numero es divible entre i y el residuo es igual a 0 nos imprime no pero si pasa lo contrario imprime si.
+en resumen el codigo parece estar un poco mal, asi que no es muy claro lo que busca hacer.
+
+EJERCICIO 9
+
+puntos = int(input("Ingrese los puntos acumulados: "))
+salario_anual = float(input("Ingrese el salario anual: "))
+
+if puntos < 50:
+    bonificacion = 0
+elif 50 <= puntos < 100:
+    bonificacion = salario_anual * 0.05
+else:
+    bonificacion = salario_anual * 0.10 + 500
+
+print("La bonificación es de:", bonificacion, "Bs")
+
+EJERCICIO 10
+
+notas = []
+
+for i in range(10):
+    nota = float(input(f"Ingrese la nota del estudiante {i + 1}: "))
+    notas.append(nota)
+print("Notas ingresadas:", notas)
+
+promedio = sum(notas) / len(notas)
+print("El promedio de las notas es:", promedio)
+
+# Encontrar la nota más alta y la más baja
+nota_mas_alta = max(notas)
+nota_mas_baja = min(notas)
+print("La nota más alta es:", nota_mas_alta)
+print("La nota más baja es:", nota_mas_baja)
+
+EJERCICIO 11
+
+precio_bicicleta = 1200
+ahorro_actual = 250
+ahorro_semanal = 25
+semanas = 0
+
+while ahorro_actual < precio_bicicleta:
+    ahorro_actual += ahorro_semanal
+    semanas += 1
+
+print("María debe ahorrar durante", semanas, "semanas para comprar la bicicleta")
+
+EJERCICIO 12
+
+precio_total = 3500
+primer_pago = 500
+saldo_restante = precio_total - primer_pago
+cuotas = 1
+
+print(f"Mes {cuotas}: Debes pagar 500 Bs")
+
+while saldo_restante > 100:
+    pago_mensual = saldo_restante * 0.15
+    saldo_restante -= pago_mensual
+    cuotas += 1
+    print(f"Mes {cuotas}: Debes pagar {pago_mensual:.2f} Bs")
+
+# Pago final
+cuotas += 1
+print(f"Mes {cuotas}: Debes pagar {saldo_restante:.2f} Bs")
+print("Número total de cuotas:", cuotas)
+
+EJERCICIO 13
+
+hora_alemana = int(input("Ingrese la hora en Alemania (0-23): "))
+hora_boliviana = hora_alemana - 6
+
+if hora_boliviana < 0:
+    hora_boliviana += 24
+
+print("La hora boliviana correspondiente es:", hora_boliviana, ":00")
+
+EJERCICIO 16
+
+dado1 = int(input("Ingrese el valor del dado 1 (1-6): "))
+dado2 = int(input("Ingrese el valor del dado 2 (1-6): "))
+dado3 = int(input("Ingrese el valor del dado 3 (1-6): "))
+dado4 = int(input("Ingrese el valor del dado 4 (1-6): "))
+dado5 = int(input("Ingrese el valor del dado 5 (1-6): "))
+dado6 = int(input("Ingrese el valor del dado 6 (1-6): "))
+
+suma = dado1 + dado2 + dado3 + dado4 + dado5 + dado6
+
+if suma <= 8:
+    print(f" :( la jugada es baja con una suma de {suma}.")
+elif 8 < suma <= 22:
+    print(f" :| la jugada es mediana con una suma de {suma}.")
+elif 22 < suma <= 35:
+    print(f" :]  la jugada es alta con una suma de {suma}.")
+elif suma == 36:
+    print(" : )¡la jugada es perfecta! Has alcanzado el máximo posible con 36.")
+else:
+    print("Valores fuera del rango esperado.")
+
+EJERCICIO 17
+
+yenes = 285100
+dolares = yenes / 142.55
+print(f"Equivalente en dólares: {dolares:.2f} USD")
+bolivianos_oficial = dolares * 6.85
+print(f"Equivalente en bolivianos (cambio oficial): {bolivianos_oficial:.2f} Bs")
+bolivianos_fuera = bolivianos_oficial * 1.5
+print(f"Equivalente en bolivianos (cambio fuera de los bancos): {bolivianos_fuera:.2f} Bs")
+if dolares >= 1500:
+    print("No requieres más fondos.")
+else:
+    print("Debes conseguir más fondos.")
+
+EJERCICIO 21
+
+num_paquetes = int(input("Ingrese el número de paquetes a enviar: "))
+peso_total = 0
+costo_individual = 0
+def calcular_tarifa(peso):
+    if 0 <= peso <= 20:
+        return 3.5
+    elif 21 <= peso <= 50:
+        return 4.5
+    elif 51 <= peso <= 100:
+        return 5.8
+    elif 101 <= peso <= 200:
+        return 7
+    elif 201 <= peso <= 350:
+        return 8
+    elif 351 <= peso <= 500:
+        return 9
+    elif 501 <= peso <= 1000:
+        return 12
+    elif 1001 <= peso <= 2000:
+        return 17
+    elif 2001 <= peso <= 3000:
+        return 21
+    else:
+        return "especial"
+for i in range(1, num_paquetes + 1):
+    peso = float(input(f"Ingrese el peso del paquete {i} en gramos: "))
+    tarifa = calcular_tarifa(peso)
+    if tarifa == "especial":
+        print(f"El paquete {i} tiene un peso fuera del rango. El tipo de envío es especial.")
+    else:
+        costo_individual += tarifa
+        peso_total += peso
+        print(f"El costo de enviar el paquete {i} es {tarifa} Bs.")
+
+tarifa_conjunto = calcular_tarifa(peso_total)
+if tarifa_conjunto == "especial":
+    print("El peso total de todos los paquetes está fuera del rango permitido. El tipo de envío es especial.")
+else:
+    print(f"El costo de enviar todos los paquetes juntos es {tarifa_conjunto} Bs.")
+    print(f"El costo total de enviar los paquetes individualmente es {costo_individual} Bs.")
+
+if tarifa_conjunto != "especial" and tarifa_conjunto < costo_individual:
+    print("Es más conveniente enviar todos los paquetes juntos.")
+else:
+    print("Es más conveniente enviar los paquetes individualmente.")
+
+EJERCICIO 24
+
+Por favor llena la cartilla explicativa, después de analizar el siguiente código:
+for i in range(1, 10):
+for j in range(1, 2):
+i+=3
+print(f"({i}, {j})", end=" ")
+print()
+
+Cartilla explicativa de Código:
+Identifica las variables: i,j
+Identifica las estructuras de control: for 
+Explica que hacen las estructuras de control en este código: la estructura de for es utilizada para iterar i y j
+Que imprimirá este código: este codigo imprimiria (i,j) pero la i va sumando +3 seria (1,1)(4,1)(7,1)..... hasta el rango que tienen
+Si se elimina la tercera línea de código cuál será la impresión: al cancelar la tercera linea i ya no aumentaria +3, por lo tanto i no cambiaria la impresion seria (1,1)(2,1)(3,1)(4,1)
+
+
+Paginas o libros visitados:
+- https://ellibrodepython.com/
+- https://argentinaenpython.com/quiero-aprender-python/aprenda-a-pensar-como-un-programador-con-python.pdf
+
+
