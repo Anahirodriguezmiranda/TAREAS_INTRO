@@ -1,0 +1,59 @@
+EJERCICIO 2
+
+
+materiales_inventario = {
+    "tablas_largas": 26,
+    "tablas_cortas": 33,
+    "ganchos_pequenos": 200,
+    "ganchos_grandes": 20,
+    "tornillos": 510
+}
+
+
+materiales_por_estante = {
+    "tablas_largas": 4,
+    "tablas_cortas": 6,
+    "ganchos_pequenos": 12,
+    "ganchos_grandes": 2,
+    "tornillos": 14
+}
+
+
+def verificar_materiales(materiales_inventario, materiales_por_estante, estantes_deseados):
+    faltantes = {}
+    for material in materiales_por_estante:  
+        cantidad = materiales_por_estante[material]  
+        total_necesario = cantidad * estantes_deseados
+        if materiales_inventario[material] < total_necesario:
+            faltantes[material] = total_necesario - materiales_inventario[material]
+    return faltantes
+
+
+def calcular_estantes_adicionales(materiales_inventario, materiales_por_estante):
+    estantes_posibles = float('inf')
+    for material in materiales_por_estante:  
+        cantidad = materiales_por_estante[material]  
+        estantes_disponibles = materiales_inventario[material] // cantidad
+        estantes_posibles = min(estantes_posibles, estantes_disponibles)
+    return estantes_posibles
+
+def main():
+    estantes_deseados = 15
+    faltantes = verificar_materiales(materiales_inventario, materiales_por_estante, estantes_deseados)
+    
+    if not faltantes:  
+        print(f"Es posible realizar los {estantes_deseados} estantes pedidos.")
+        
+       
+        estantes_adicionales = calcular_estantes_adicionales(materiales_inventario, materiales_por_estante) - estantes_deseados
+        print(f"Con el material sobrante puedes construir {estantes_adicionales} estantes adicionales.")
+        
+    else:
+        print("No es posible cubrir el pedido porque faltan:")
+        for material in faltantes:  
+          cantidad_faltante = faltantes[material]  
+          print(f"{cantidad_faltante} de {material}")
+
+
+
+main()
