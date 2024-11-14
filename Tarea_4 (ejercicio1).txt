@@ -1,0 +1,67 @@
+EJERCICIO 1
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        
+        int costoU = 0;
+        int costoT = 0;
+        int pesoT = 0;
+        
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Ingresa número de paquetes: ");
+        int c = scanner.nextInt();
+        
+        for (int i = 0; i < c; i++) {
+            System.out.print("Ingresa el peso del paquete: ");
+            int p = scanner.nextInt();
+            
+            int costo = (int) costovalor(p);
+            costoU = costoU + costo;
+            pesoT = pesoT + p;
+        }
+        
+        costoT = (int)(costovalor(pesoT));
+        
+        System.out.println("Costo total (costoT): " + costoT);
+        System.out.println("Costo unitario acumulado (costoU): " + costoU);
+        
+        
+        mostrar(costoU, costoT);
+    }
+
+    static double costovalor(double valor) {
+        double costo = 0;
+        
+        if (valor <= 20) {
+            costo = 3.5;
+        } else if (valor <= 50) {
+            costo = 4.5;
+        } else if (valor <= 100) {
+            costo = 5.8;
+        } else if (valor <= 200) {
+            costo = 7;  
+        } else if(valor <= 350){
+            costo = 8;
+        } else if (valor <= 500){
+            costo = 9;
+        } else if (valor <= 1000){
+            costo = 12;
+        } else if (valor <= 2000 ){
+            costo = 17;
+        } else if (valor <= 3000){
+            costo = 21;
+        }
+        return costo;
+    }
+    
+   
+    static void mostrar(int costoU, int costoT) {
+        if (costoU > costoT) {
+            System.out.println("No conviene enviar paquete por paquete");
+        } else {
+            System.out.println("Conviene enviar todo en uno");
+        }
+    }
+}
