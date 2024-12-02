@@ -1,0 +1,254 @@
+EJERCICIO 1
+
+def calcular_cantidad_minima(costo_fijo, costo_variable, costo_maximo):
+   
+    cantidad = 1
+    while (costo_fijo + costo_variable * cantidad) / cantidad >= costo_maximo:
+        cantidad += 1
+    return cantidad
+
+def mostrar_resultado(cantidad):
+    
+    print("La cantidad mínima de sombreros que debe producir es:", cantidad)
+
+def main():
+
+    costo_fijo = 800
+    costo_variable = 20
+    costo_maximo = 25
+
+    cantidad_minima = calcular_cantidad_minima(costo_fijo, costo_variable, costo_maximo)
+
+    mostrar_resultado(cantidad_minima)
+main()
+
+EJERCICIO 2
+
+def es_primo(numero):
+    if numero <= 1:
+        return False
+    for i in range(2, numero):
+        if numero % i == 0:
+            return False
+    return True
+
+def calcular_puntos(numero):
+    puntos = 0
+    
+    if es_primo(numero):  
+        puntos += 4
+
+    if numero % 2 == 0:  
+        puntos += 1
+
+    if numero % 7 == 0:  
+        puntos += 2
+
+    return puntos
+
+def verificar_ficha():
+    puntos_totales = 0
+    
+    for i in range(20):
+        numero = int(input(f"Ingrese el número {i+1}: "))
+        puntos_totales += calcular_puntos(numero)
+    
+    if puntos_totales > 70:
+        print("¡La ficha es ganadora!")
+    else:
+        print("La ficha no es ganadora.")
+        
+def main():
+    verificar_ficha()
+if __name__ == "__main__":
+    main()
+
+EJERCICIO 3
+
+def es_espejo(numero):
+    return str(numero) == str(numero)[::-1]
+
+def main():
+    numero = int(input("Ingresa el número de la ficha: "))
+    if es_espejo(numero):
+        print("Te tocó ir a las clases presenciales")
+    else:
+        print("Te quedas en casita, ¡pero a estudiar!")
+if __name__ == "__main__":
+    main()
+
+EJERCICIO 4
+
+def clasificar_estudiantes_por_edad(edad):
+    if edad % 5 == 0 and edad % 2 != 0:
+        return 1  # Grupo 1
+    elif edad % 4 == 0:
+        return 2  # Grupo 2
+    elif edad % 3 == 0 and edad % 4 != 0 and edad % 5 != 0 and edad % 2 != 0:
+        return 3  # Grupo 3
+    else:
+        return 4  # Grupo 4
+
+def main():
+    grupo1 = 0
+    grupo2 = 0
+    grupo3 = 0
+    grupo4 = 0
+    
+    estudiantes_por_edad = 1000 // 8  
+    
+    for edad in range(10, 18):  
+        for _ in range(estudiantes_por_edad):  
+            grupo = clasificar_estudiantes_por_edad(edad)
+            if grupo == 1:
+                grupo1 += 1
+            elif grupo == 2:
+                grupo2 += 1
+            elif grupo == 3:
+                grupo3 += 1
+            else:
+                grupo4 += 1
+    
+    print("Grupo 1 :", grupo1)
+    print("Grupo 2 :", grupo2)
+    print("Grupo 3 :", grupo3)
+    print("Grupo 4 :", grupo4)
+if __name__ == "__main__":
+    main()
+
+EJERCICIO 5
+
+notas = []
+
+for i in range(10):
+    nota = float(input(f"Ingrese la nota del estudiante {i + 1}: "))
+    notas.append(nota)
+print("Notas ingresadas:", notas)
+
+promedio = sum(notas) / len(notas)
+print("El promedio de las notas es:", promedio)
+
+# Encontrar la nota más alta y la más baja
+nota_mas_alta = max(notas)
+nota_mas_baja = min(notas)
+print("La nota más alta es:", nota_mas_alta)
+print("La nota más baja es:", nota_mas_baja)
+
+
+EJERCICIO 7
+
+materiales_inventario = {
+    "tablas_largas": 26,
+    "tablas_cortas": 33,
+    "ganchos_pequenos": 200,
+    "ganchos_grandes": 20,
+    "tornillos": 510
+}
+
+
+materiales_por_estante = {
+    "tablas_largas": 4,
+    "tablas_cortas": 6,
+    "ganchos_pequenos": 12,
+    "ganchos_grandes": 2,
+    "tornillos": 14
+}
+
+
+def verificar_materiales(materiales_inventario, materiales_por_estante, estantes_deseados):
+    faltantes = {}
+    for material in materiales_por_estante:  
+        cantidad = materiales_por_estante[material]  
+        total_necesario = cantidad * estantes_deseados
+        if materiales_inventario[material] < total_necesario:
+            faltantes[material] = total_necesario - materiales_inventario[material]
+    return faltantes
+
+
+def calcular_estantes_adicionales(materiales_inventario, materiales_por_estante):
+    estantes_posibles = float('inf')
+    for material in materiales_por_estante:  
+        cantidad = materiales_por_estante[material]  
+        estantes_disponibles = materiales_inventario[material] // cantidad
+        estantes_posibles = min(estantes_posibles, estantes_disponibles)
+    return estantes_posibles
+
+def main():
+    estantes_deseados = 15
+    faltantes = verificar_materiales(materiales_inventario, materiales_por_estante, estantes_deseados)
+    
+    if not faltantes:  
+        print(f"Es posible realizar los {estantes_deseados} estantes pedidos.")
+        
+       
+        estantes_adicionales = calcular_estantes_adicionales(materiales_inventario, materiales_por_estante) - estantes_deseados
+        print(f"Con el material sobrante puedes construir {estantes_adicionales} estantes adicionales.")
+        
+    else:
+        print("No es posible cubrir el pedido porque faltan:")
+        for material in faltantes:  
+          cantidad_faltante = faltantes[material]  
+          print(f"{cantidad_faltante} de {material}")
+main()
+
+EJERCICIO 9
+
+def calcular_costo(peso):
+
+    if peso <= 20:
+        return 3.5
+    elif peso <= 50:
+        return 4.5
+    elif peso <= 100:
+        return 5.8
+    elif peso <= 200:
+        return 7.0
+    elif peso <= 350:
+        return 8.0
+    elif peso <= 500:
+        return 9.0
+    elif peso <= 1000:
+        return 12.0
+    elif peso <= 2000:
+        return 17.0
+    elif peso <= 3000:
+        return 21.0
+    else:
+        return -1  
+
+def procesar_envios(numero_paquetes):
+    costo_total_unitario = 0
+    peso_total = 0
+
+    for i in range(numero_paquetes):
+        peso = float(input(f"Ingrese el peso del paquete {i + 1}: "))
+        costo_unitario = calcular_costo(peso)
+
+        if costo_unitario == -1:
+            print(f"Error: El peso {peso} excede el límite permitido de 3000.")
+            return  
+
+        costo_total_unitario += costo_unitario
+        peso_total += peso
+
+    costo_total_consolidado = calcular_costo(peso_total)
+
+    print(f"\nCosto total consolidado: {costo_total_consolidado}")
+    print(f"Costo unitario acumulado: {costo_total_unitario}")
+
+    mostrar_resultado(costo_total_unitario, costo_total_consolidado)
+
+
+def mostrar_resultado(costo_unitario_total, costo_consolidado_total):
+   
+    if costo_unitario_total > costo_consolidado_total:
+        print("No conviene enviar paquete por paquete.")
+    else:
+        print("Conviene enviar todo en uno.")
+
+
+def main():
+    numero_paquetes = int(input("Ingrese el número de paquetes: "))
+    procesar_envios(numero_paquetes)
+if __name__ == "__main__":
+    main()
